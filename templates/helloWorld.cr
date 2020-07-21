@@ -3,6 +3,6 @@ require "json"
 
 json = JSON.parse STDIN
 
-json.as_h["test"] = JSON::Any.new "test"
+json.as_h["helloFromCrystal"] = JSON::Any.new Crystal::VERSION
 
 puts json.to_json
