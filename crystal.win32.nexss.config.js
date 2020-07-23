@@ -3,6 +3,13 @@ languageConfig.title = "Crystal";
 languageConfig.description =
   "Crystal is a programming language with the syntax similar to Ruby.";
 languageConfig.url = "https://crystal-lang.org";
+languageConfig.founders = [
+  "Ary Borenszweig",
+  "Juan Wajnerman",
+  "Brian Cardiff",
+];
+languageConfig.developers = ["Manas Technology Solutions"];
+languageConfig.years = ["2014"];
 languageConfig.extensions = [".cr"];
 languageConfig.executeCommandLine = "crystal";
 languageConfig.printCommandLine = "";
