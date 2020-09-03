@@ -1,4 +1,4 @@
-let languageConfig = Object.assign({}, require("./php.win32.nexss.config"));
+let languageConfig = Object.assign({}, require("./crystal.win32.nexss.config"));
 languageConfig.compilers = {
   crystalWSL: {
     install: `brew update && brew install crystal`,
