@@ -1,4 +1,7 @@
-let languageConfig = Object.assign({}, require("../config.win32"));
+let languageConfig = Object.assign(
+  {},
+  require(`../config.${process.platform}`)
+);
 languageConfig.title = "Crystal";
 languageConfig.description =
   "Crystal is a programming language with the syntax similar to Ruby.";
