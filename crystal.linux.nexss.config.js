@@ -5,7 +5,7 @@ if (process.getuid && process.getuid() === 0) {
 }
 
 languageConfig.compilers = {
-  crystalWSL: {
+  crystal: {
     install: `${sudo}curl -sSL https://dist.crystal-lang.org/apt/setup.sh | bash && ${sudo}apt install crystal`,
     command: "crystal",
     args: "<file>",
@@ -21,33 +21,33 @@ if (require("fs").existsSync(`${process.env.NEXSS_SRC_PATH}/lib/osys.js`)) {
   switch (distName) {
     case "Oracle":
     case "Oracle Linux Server":
-      languageConfig.compilers.php7.install = `curl https://dist.crystal-lang.org/rpm/setup.sh | sudo bash`;
+      languageConfig.compilers.crystal.install = `curl https://dist.crystal-lang.org/rpm/setup.sh | sudo bash`;
       if (version) {
         //if here for older versions of nexssp
         const distVersion = version(); // *1 converts to number
         if (distVersion >= 8) {
           // TODO: recognize the slim version
-          languageConfig.compilers.php7.install += ` && ${sudo}dnf install crystal`;
+          languageConfig.compilers.crystal.install += ` && ${sudo}dnf install crystal`;
         } else {
-          languageConfig.compilers.php7.install += ` && ${sudo}yum install crystal`;
+          languageConfig.compilers.crystal.install += ` && ${sudo}yum install crystal`;
         }
       }
       break;
     case "Alpine Linux":
-      languageConfig.compilers.php7.install = `${sudo}apk add crystal shards`;
+      languageConfig.compilers.crystal.install = `${sudo}apk add crystal shards`;
       break;
     case "Arch Linux":
-      languageConfig.compilers.php7.install = `${sudo}pacman -Sy --noconfirm crystal shards`;
+      languageConfig.compilers.crystal.install = `${sudo}pacman -Sy --noconfirm crystal shards`;
       break;
     case "Fedora":
-      languageConfig.compilers.php7.install = `${sudo}snap install crystal --classic`;
+      languageConfig.compilers.crystal.install = `${sudo}snap install crystal --classic`;
       break;
     case "CentOS Linux":
-      languageConfig.compilers.php7.install = `${sudo}curl https://dist.crystal-lang.org/rpm/setup.sh | sudo bash && ${sudo}yum install crystal`;
+      languageConfig.compilers.crystal.install = `${sudo}curl https://dist.crystal-lang.org/rpm/setup.sh | sudo bash && ${sudo}yum install crystal`;
       break;
     case "RHEL Linux":
-      languageConfig.compilers.php7.install = `curl https://dist.crystal-lang.org/rpm/setup.sh | sudo bash`;
-      languageConfig.compilers.php7.install += ` && ${sudo}yum install -y php php-json php-imap`;
+      languageConfig.compilers.crystal.install = `curl https://dist.crystal-lang.org/rpm/setup.sh | sudo bash`;
+      languageConfig.compilers.crystal.install += ` && ${sudo}yum install -y php php-json php-imap`;
       break;
   }
 
