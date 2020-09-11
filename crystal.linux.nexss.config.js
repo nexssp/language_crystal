@@ -21,7 +21,7 @@ if (require("fs").existsSync(`${process.env.NEXSS_SRC_PATH}/lib/osys.js`)) {
   switch (distName) {
     case "Oracle":
     case "Oracle Linux Server":
-      languageConfig.compilers.crystal.install = `curl https://dist.crystal-lang.org/rpm/setup.sh | sudo bash`;
+      languageConfig.compilers.crystal.install = `curl https://dist.crystal-lang.org/rpm/setup.sh | ${sudo} bash`;
       if (version) {
         //if here for older versions of nexssp
         const distVersion = version(); // *1 converts to number
@@ -43,10 +43,10 @@ if (require("fs").existsSync(`${process.env.NEXSS_SRC_PATH}/lib/osys.js`)) {
       languageConfig.compilers.crystal.install = `${sudo}snap install crystal --classic`;
       break;
     case "CentOS Linux":
-      languageConfig.compilers.crystal.install = `${sudo}curl https://dist.crystal-lang.org/rpm/setup.sh | sudo bash && ${sudo}yum install crystal`;
+      languageConfig.compilers.crystal.install = `${sudo}curl https://dist.crystal-lang.org/rpm/setup.sh | ${sudo} bash && ${sudo}yum install crystal`;
       break;
     case "RHEL Linux":
-      languageConfig.compilers.crystal.install = `curl https://dist.crystal-lang.org/rpm/setup.sh | sudo bash`;
+      languageConfig.compilers.crystal.install = `curl https://dist.crystal-lang.org/rpm/setup.sh | ${sudo} bash`;
       languageConfig.compilers.crystal.install += ` && ${sudo}yum install -y php php-json php-imap`;
       break;
   }
