@@ -32,10 +32,8 @@ php -r "unlink('composer-setup.php');"`;
         if (distVersion >= 8) {
           // TODO: recognize the slim version
           languageConfig.compilers.php7.install += ` && ${sudo}dnf install crystal`;
-          languageConfig.languagePackageManagers.composer.installation = `${sudo}dnf update && ${sudo}dnf install -y curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer`;
         } else {
           languageConfig.compilers.php7.install += ` && ${sudo}yum install crystal`;
-          languageConfig.languagePackageManagers.composer.installation = `${sudo}yum update && ${sudo}yum install -y curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer`;
         }
       }
       break;
