@@ -34,7 +34,7 @@ if (require("fs").existsSync(`${process.env.NEXSS_SRC_PATH}/lib/osys.js`)) {
       }
       break;
     case "Alpine Linux":
-      languageConfig.compilers.crystal.install = `${sudo}apk add crystal shards`;
+      languageConfig.compilers.crystal.install = `${sudo}apk add musl-dev crystal shards`;
       break;
     case "Arch Linux":
       languageConfig.compilers.crystal.install = `${sudo}pacman -Sy --noconfirm crystal shards`;
