@@ -20,7 +20,7 @@ languageConfig.checkSyntax = "";
 languageConfig.interactiveShell = "crystal";
 languageConfig.builders = {};
 languageConfig.compilers = {
-  crystalWSL: {
+  crystal: {
     install: `Powershell -C "Set-Location -Path ${__dirname} ; wsl -u root install/InstallCrystalWSL.ps1"`,
     command: "wsl crystal",
     args: "<file>",
