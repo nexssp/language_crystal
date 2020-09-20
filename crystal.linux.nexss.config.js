@@ -6,7 +6,7 @@ if (process.getuid && process.getuid() === 0) {
 
 languageConfig.compilers = {
   crystal: {
-    install: `${sudo}apt install -y crystal && ${sudo}curl -sSL https://dist.crystal-lang.org/apt/setup.sh | bash && ${sudo}apt install -y crystal`,
+    install: `${sudo}apt install -y curl && ${sudo}curl -sSL https://dist.crystal-lang.org/apt/setup.sh | bash && ${sudo}apt install -y crystal`,
     command: "crystal",
     args: "<file>",
     help: ``,
@@ -19,6 +19,12 @@ if (require("fs").existsSync(`${process.env.NEXSS_SRC_PATH}/lib/osys.js`)) {
   const distName = dist();
   // TODO: Later to cleanup this config file !!
   switch (distName) {
+    case "openSUSE Leap":
+    case "openSUSE Tumbleweed":
+      languageConfig.compilers.crystal.install = `${sudo}rpm --import https://dist.crystal-lang.org/rpm/RPM-GPG-KEY
+${sudo}zypper ar -e -f -t rpm-md https://dist.crystal-lang.org/rpm/ Crystal
+${sudo}zypper -n install crystal`;
+      break;
     case "Oracle":
     case "Oracle Linux Server":
       languageConfig.compilers.crystal.install = `curl https://dist.crystal-lang.org/rpm/setup.sh | ${sudo} bash`;
