@@ -43,7 +43,7 @@ ${sudo}zypper -n install crystal`;
       languageConfig.compilers.crystal.install = `${sudo}apk add musl-dev crystal shards`;
       break;
     case "Arch Linux":
-      languageConfig.compilers.crystal.install = `${sudo}pacman -Sy --noconfirm crystal shards`;
+      languageConfig.compilers.crystal.install = `${sudo}pacman -Sy --noconfirm gcc crystal shards`;
       break;
     case "Fedora":
       languageConfig.compilers.crystal.install = `${sudo}snap install crystal --classic`;
