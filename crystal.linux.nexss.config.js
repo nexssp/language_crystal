@@ -7,7 +7,7 @@ if (process.getuid && process.getuid() === 0) {
 languageConfig.compilers = {
   crystal: {
     install: `${sudo}apt install -y curl 
-${sudo}curl -sSL https://dist.crystal-lang.org/apt/setup.sh | bash
+${sudo}curl -sSL https://dist.crystal-lang.org/apt/setup.sh | ${sudo}bash
 ${sudo}apt install -y crystal`,
     command: "crystal",
     args: "<file>",
