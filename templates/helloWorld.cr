@@ -1,8 +1,9 @@
+# Nexss Programmer 2.x Template
 # Example from reddit user https://www.reddit.com/user/Blacksmoke16/
 require "json"
 
-json = JSON.parse STDIN
+nexssStdout = JSON.parse STDIN
 
-json.as_h["helloFromCrystal"] = JSON::Any.new Crystal::VERSION
+nexssStdout.as_h["helloFromCrystal"] = JSON::Any.new Crystal::VERSION
 
-puts json.to_json
+puts nexssStdout.to_json
