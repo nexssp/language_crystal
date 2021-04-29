@@ -49,12 +49,16 @@ ${sudo}zypper -n install crystal`;
     languageConfig.compilers.crystal.install = `${sudo}snap install crystal --classic`;
     break;
   case process.distros.CENTOS:
-    languageConfig.compilers.crystal.install = `${sudo}curl https://dist.crystal-lang.org/rpm/setup.sh | ${sudo} bash && ${sudo}yum install crystal`;
+    languageConfig.compilers.crystal.install = `${sudo}curl https://dist.crystal-lang.org/rpm/setup.sh | ${sudo} bash && ${sudo}yum install -y crystal`;
     break;
-  case process.distros.RHEL:
-    languageConfig.compilers.crystal.install = `curl https://dist.crystal-lang.org/rpm/setup.sh | ${sudo} bash`;
-    languageConfig.compilers.crystal.install += ` && ${sudo}yum install -y php php-json php-imap`;
+  case process.distros.AMAZON:
+  case process.distros.AMAZON_AMI:
+    languageConfig.compilers.crystal.install = `${sudo}curl -fsSL https://crystal-lang.org/install.sh | ${sudo} bash && ${sudo}yum install -y crystal`;
     break;
+  default:
+    languageConfig.compilers.crystal.install = process.replacePMByDistro(
+      languageConfig.compilers.crystal.install
+    );
 }
 
 languageConfig.dist = distName;
